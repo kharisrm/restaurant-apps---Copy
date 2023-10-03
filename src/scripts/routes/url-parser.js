@@ -1,3 +1,4 @@
+// url-parser.js
 const UrlParser = {
   parseActiveUrlWithCombiner() {
     const url = window.location.hash.slice(1).toLowerCase();
@@ -9,7 +10,6 @@ const UrlParser = {
     const url = window.location.hash.slice(1).toLowerCase();
     return this._urlSplitter(url);
   },
-
   _urlSplitter(url) {
     const urlsSplits = url.split("/");
     return {
@@ -21,6 +21,11 @@ const UrlParser = {
 
   _urlCombiner(splitedUrl) {
     return (splitedUrl.resource ? `/${splitedUrl.resource}` : "/") + (splitedUrl.id ? "/:id" : "") + (splitedUrl.verb ? `/${splitedUrl.verb}` : "");
+  },
+
+  // Tambahkan fungsi navigateTo untuk menavigasi ke URL tertentu
+  navigateTo(url) {
+    window.location.hash = url;
   },
 };
 
